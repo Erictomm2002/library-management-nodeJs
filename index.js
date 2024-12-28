@@ -1,19 +1,5 @@
-const {connectDB, disconnectDB} = require("./config/db.js");
-require('dotenv').config()
+const express = require('express');
 
-async function run() {
-  const mongoService = await connectDB();
-  try {
-    const movies = mongoService.collection('listingsAndReviews');
-    const query = {
-      name:
-        "Ribeira Charming Duplex"
-    };
-    const movie = await movies.findOne(query);
-    console.log(movie);
-  } finally {
-    await disconnectDB();
-  }
-}
+const app = express();
 
-run().catch(console.dir);
+module.exports = app;
